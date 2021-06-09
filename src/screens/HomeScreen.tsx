@@ -1,19 +1,18 @@
 import React from 'react'
-import { View, Dimensions, ScrollView, Text, FlatList } from 'react-native'
+import { View, Dimensions, ScrollView } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import Carousel from 'react-native-snap-carousel';
+import HorizontalSlider from '../components/HorizontalSlider';
 
 import MoviePoster from '../components/MoviePoster'
 import Spinner from '../components/Spinner'
 import useMovies from '../hooks/useMovies'
-import { Movie } from '../interfaces/MovieInterface';
-import stylesGlobal from '../themes/appTheme';
 
 const { width: windowWidth } = Dimensions.get('window')
 
 const HomeScreen = () => {
 
-  const {nowPlaying, isLoading} = useMovies()
+  const {nowPlaying, popular, isLoading} = useMovies()
   const {top} = useSafeAreaInsets()
 
   if(isLoading){
@@ -22,7 +21,7 @@ const HomeScreen = () => {
   
   
   return (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
 
       <View style={{marginTop: top+20}}>
         <View style={{
@@ -33,26 +32,13 @@ const HomeScreen = () => {
             renderItem={({item} : any) => <MoviePoster movie={item} />}
             sliderWidth={windowWidth}
             itemWidth={300} 
+            inactiveSlideOpacity={0.9}
             //autoplay={true}
             />
         </View>
-        <View style={stylesGlobal.popularContainer}>
-          <Text style={stylesGlobal.title1} >Popular</Text>
-          <FlatList 
-            data={nowPlaying}
-            renderItem={({item} : any) => (
-              <MoviePoster 
-                movie={item} 
-                width={140} 
-                height={200} 
-                marginHorizontal={5} 
-              />
-              )}
-              keyExtractor={(item) => item.id.toString()}
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-            />
-        </View>
+        <HorizontalSlider title="Popular" movies={popular} />
+        {/*<HorizontalSlider movies={nowPlaying} />*/}
+        
       </View>
     </ScrollView>
   )
