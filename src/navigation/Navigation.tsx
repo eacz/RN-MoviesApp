@@ -3,8 +3,14 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import HomeScreen from '../screens/HomeScreen';
 import DetailScreen from '../screens/DetailScreen';
+import { Movie } from '../interfaces/MovieInterface';
 
-const Stack = createStackNavigator();
+export type NavigationStackParams = {
+  HomeScreen: undefined,
+  DetailScreen: Movie
+}
+
+const Stack = createStackNavigator<NavigationStackParams>();
 
 const Navigation = () => {
   return (
@@ -16,8 +22,8 @@ const Navigation = () => {
         }
       }}
     >
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Detail" component={DetailScreen} />
+      <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      <Stack.Screen name="DetailScreen" component={DetailScreen} />
     </Stack.Navigator>
   );
 }
