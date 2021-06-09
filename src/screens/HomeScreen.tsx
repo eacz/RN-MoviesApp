@@ -12,7 +12,7 @@ const { width: windowWidth } = Dimensions.get('window')
 
 const HomeScreen = () => {
 
-  const {nowPlaying, popular, isLoading} = useMovies()
+  const {nowPlaying, popular, topRated, upcoming, isLoading} = useMovies()
   const {top} = useSafeAreaInsets()
 
   if(isLoading){
@@ -37,7 +37,8 @@ const HomeScreen = () => {
             />
         </View>
         <HorizontalSlider title="Popular" movies={popular} />
-        {/*<HorizontalSlider movies={nowPlaying} />*/}
+        <HorizontalSlider title="Top rated" movies={topRated} />
+        <HorizontalSlider title="Upcoming" movies={upcoming} />
         
       </View>
     </ScrollView>
