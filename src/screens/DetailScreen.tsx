@@ -1,7 +1,8 @@
 import { StackScreenProps } from '@react-navigation/stack';
 import React from 'react'
 import { View, Dimensions, Image, StyleSheet, ScrollView, Text } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import MovieDetails from '../components/MovieDetails';
+import Spinner from '../components/Spinner';
 import useMovieDetails from '../hooks/useMovieDetails';
 
 import { NavigationStackParams } from '../navigation/Navigation';
@@ -16,9 +17,6 @@ const DetailScreen = ({ route }:Props) => {
   const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`
 
   const {isLoading,fullMovie,cast} = useMovieDetails(movie.id) 
-
-  console.log(isLoading);
-  
   
   return (
       <ScrollView>
@@ -30,6 +28,12 @@ const DetailScreen = ({ route }:Props) => {
           {movie.original_title != movie.title && <Text style={styles.subtitle}>{movie.original_title}</Text>}
           <Text style={styles.title}>{movie.title}</Text>
         </View>
+      
+          {isLoading 
+              ? <Spinner size={40} color="#cccccc" /> 
+              : <MovieDetails cast={cast} fullMovie={fullMovie!} />
+          }
+
       </ScrollView>
   )
 }

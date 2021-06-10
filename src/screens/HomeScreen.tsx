@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Dimensions, ScrollView } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import Carousel from 'react-native-snap-carousel';
-import HorizontalSlider from '../components/HorizontalSlider';
+import HorizontalMovieSlider from '../components/HorizontalMovieSlider';
 
 import MoviePoster from '../components/MoviePoster'
 import Spinner from '../components/Spinner'
@@ -36,9 +36,9 @@ const HomeScreen = () => {
             //autoplay={true}
             />
         </View>
-        <HorizontalSlider title="Popular" movies={popular} />
-        <HorizontalSlider title="Top rated" movies={topRated} />
-        <HorizontalSlider title="Upcoming" movies={upcoming} />
+        <HorizontalMovieSlider title="Popular" movies={popular} />
+        <HorizontalMovieSlider title="Top rated" movies={topRated} />
+        <HorizontalMovieSlider title="Upcoming" movies={upcoming} />
         
       </View>
     </ScrollView>

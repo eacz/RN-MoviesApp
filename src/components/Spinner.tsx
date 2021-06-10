@@ -1,11 +1,17 @@
 import React from 'react'
 import { View, ActivityIndicator } from 'react-native'
-import colors from '../themes/colors'
+import colors from '../themes/colors';
 
-const Spinner = () => {
+interface Props {
+  size?: number,
+  color?: string
+}
+
+
+const Spinner = ({size = 100, color = colors.primary} : Props) => {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}} >
-      <ActivityIndicator color={colors.primary} size={100} />
+      <ActivityIndicator color={color} size={size} />
     </View>
   )
 }
