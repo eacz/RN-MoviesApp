@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/core';
 import React from 'react'
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 import { Movie } from '../interfaces/MovieInterface';
+import stylesGlobal from '../themes/appTheme';
 
 interface Props {
   movie: Movie,
@@ -23,32 +24,11 @@ const MoviePoster = ({movie, height = 420, width = 300, marginHorizontal=0} : Pr
       }}
       onPress={() => navigation.navigate("DetailScreen", movie)}
     >
-      <View style={styles.imageContainer}>
-        <Image source={{uri}} style={styles.poster} />
+      <View style={stylesGlobal.imageContainer}>
+        <Image source={{uri}} style={stylesGlobal.poster} />
       </View>
     </TouchableOpacity>
   )
 }
-
-const styles = StyleSheet.create({
-    imageContainer: {
-      flex: 1,
-      shadowColor: "#000",
-      shadowOffset: {
-        width: 0,
-        height: 10,
-      },
-      shadowOpacity: 0.3,
-      shadowRadius: 4.65,
-      elevation: 10,
-      borderRadius: 18
-    },
-    poster: {
-      flex: 1,
-      borderRadius: 18,
-      
-    }
-});
-
 
 export default MoviePoster
