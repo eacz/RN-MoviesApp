@@ -23,7 +23,7 @@ const Navigation = () => {
       }}
     >
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
-      <Stack.Screen name="DetailScreen" component={DetailScreen} />
+      <Stack.Screen name="DetailScreen" options={{cardStyle: {backgroundColor: '#e1e1e1'}}} component={DetailScreen} />
     </Stack.Navigator>
   );
 }
