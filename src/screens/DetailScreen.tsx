@@ -1,6 +1,7 @@
 import { StackScreenProps } from '@react-navigation/stack';
 import React from 'react'
-import { View, Dimensions, Image, StyleSheet, ScrollView, Text } from 'react-native';
+import { View, Dimensions, Image, StyleSheet, ScrollView, Text, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import MovieDetails from '../components/MovieDetails';
 import Spinner from '../components/Spinner';
 import useMovieDetails from '../hooks/useMovieDetails';
@@ -12,7 +13,7 @@ interface Props extends StackScreenProps<NavigationStackParams, 'DetailScreen'> 
 
 const screenHeight = Dimensions.get('window').height
 
-const DetailScreen = ({ route }:Props) => {
+const DetailScreen = ({ route, navigation }:Props) => {
   const movie = route.params
   const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`
 
@@ -33,6 +34,15 @@ const DetailScreen = ({ route }:Props) => {
               ? <Spinner size={40} color="#cccccc" /> 
               : <MovieDetails cast={cast} fullMovie={fullMovie!} />
           }
+
+          <TouchableOpacity 
+            activeOpacity={0.7}
+            style={styles.backButton }
+            onPress={() => navigation.goBack()}
+          >
+            <Icon color="white" name="arrow-back-outline" size={50} />
+          </TouchableOpacity>
+
 
       </ScrollView>
   )
@@ -58,6 +68,11 @@ const styles = StyleSheet.create({
     subtitle: {
       fontSize: 16,
       opacity: 0.5
+    },
+    backButton: {
+      position: 'absolute',
+      zIndex: 999,
+      elevation: 9
     }
 });
 

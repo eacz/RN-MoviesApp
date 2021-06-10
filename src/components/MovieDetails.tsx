@@ -26,7 +26,9 @@ const MovieDetails = ({cast, fullMovie} : Props) => {
         <Text style={{fontSize:16}}>{fullMovie.overview}</Text>
         
         <Text style={styles.subtitle}>Budget </Text>
-        <Text style={{fontSize: 18}}>{currencyFormatter.format(fullMovie.budget, {code: 'USD'}) } </Text>
+        <Text style={{fontSize: 18}}>
+          {fullMovie.budget ? currencyFormatter.format(fullMovie.budget, {code: 'USD'}) : 'There is no budget information.' } 
+        </Text>
       </View>
 
       {/* Casting */}

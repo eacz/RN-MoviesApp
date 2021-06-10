@@ -4,12 +4,12 @@ const stylesGlobal = StyleSheet.create({
     popularContainer: {
       //backgroundColor: 'red',
       height: 275,
-      marginLeft:5 
     },
     title1: {
       fontSize: 30,
       marginBottom: 5,
-      fontWeight: 'bold'
+      fontWeight: 'bold',
+      marginLeft: 7
     },
     imageContainer: {
       flex: 1,

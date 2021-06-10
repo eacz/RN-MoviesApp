@@ -25,7 +25,7 @@ const HorizontalSlider = ({title,movies}:Props) => {
                 movie={item} 
                 width={140} 
                 height={200} 
-                marginHorizontal={5} 
+                marginHorizontal={7} 
               />
               )}
               keyExtractor={(item) => item.id.toString()}
