@@ -1,4 +1,3 @@
-import axios from "axios"
 import { useEffect, useState } from "react"
 import movieDb from "../api/movieDb";
 import { FullMovie } from '../interfaces/MovieInterface';
